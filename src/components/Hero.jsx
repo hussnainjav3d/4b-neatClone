@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { TimelineMax } from "gsap";
-
+import { TimelineMax, CSSPlugin, gsap } from "gsap/all";
+gsap.registerPlugin(CSSPlugin);
 const Hero = () => {
   const animate = new TimelineMax({ paused: true });
   const heroSecondaryImage = useRef(null);
@@ -27,7 +27,8 @@ const Hero = () => {
         heroText.current,
         1.5,
         { opacity: 0, x: -100, duration: 0.75 },
-        { opacity: 1, x: 0 }
+        { opacity: 1, x: 0 },
+        "-=1.5"
       )
 
       .play();
